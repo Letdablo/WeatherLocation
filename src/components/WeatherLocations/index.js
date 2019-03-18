@@ -13,7 +13,7 @@ import {
     CLOUD ,
     ClOUDY,
     SUN ,
-    RAIN,
+   
 } from './../../constants/weathers';
 
 
@@ -27,12 +27,11 @@ class WeatherLocations extends Component{
             city,
             data:null,
         };
-        console.log("constructor");
+       // console.log("constructor");
     }
-    handleUpdateClick= () =>{
-        
+    UpdateData= () =>{
         fetch(getUrlWeatherByCity(this.state.city)).then(res =>{
-            console.log("result handleUpdateClick");
+      //      console.log("result handleUpdateClick");
             return res.json();
         }).then(data =>{
            this.setState({
@@ -40,24 +39,22 @@ class WeatherLocations extends Component{
            })     
         });      
     }
-    componentWillMount() {
-        console.log("componentWillMount");
-    }      
     componentDidMount() {
-        console.log("componentDidMount");
-        this.handleUpdateClick();
+          this.UpdateData();
     }
+    /*componentWillMount() {
+    }      
+  
     componentWillUpdate(nextProps, nextState) {
-        console.log("componentWillUpdate");
     }   
+    
     componentDidUpdate(prevProps, prevState) {
-        console.log("componentDidUpdate");
-    }
+    } */
     render(){
-        console.log("render");
+        const {onWeatherLocationClick}=this.props;
         const {city,data}=this.state;
         return(
-            <div className="weatherLocationCont">
+            <div className="weatherLocationCont" onClick={onWeatherLocationClick}>
                 <Location city={city}/>
                 {data ? <WeatherData  data={data}/> : <center><CircularProgress/></center>}                
             </div>
@@ -66,5 +63,6 @@ class WeatherLocations extends Component{
 };
 WeatherLocations.protoTypes={
     city:PropTypes.string.isRequired,
+    onWeatherLocationClick:PropTypes.func.isRequired
 }
 export default WeatherLocations;
