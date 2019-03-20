@@ -53,7 +53,7 @@ class App extends Component {
           <Col xs={12} md={6}>
             <Paper  >
               <div className="details">
-              {city ? <ForecastExtended city={city}> </ForecastExtended>:null}
+              {city ? <ForecastExtended city={city}> </ForecastExtended>:<ForecastExtended city={""}> </ForecastExtended>}
               </div>
             </Paper>       
           </Col>

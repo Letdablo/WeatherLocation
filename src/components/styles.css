@@ -1,7 +1,4 @@
 
-.details{
-    margin-top: 5px;
-}
 @media (max-width: 64em){
     .locationList{
         max-height: 30vh;
