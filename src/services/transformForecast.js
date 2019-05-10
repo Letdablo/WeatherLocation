@@ -1,4 +1,6 @@
 import moment, { weekdays } from "moment";
+import 'moment/locale/es';
+import transformWeather from './transformWeather';
 
 const transformForecats = (data) =>(
      data.list.filter(item =>(
@@ -8,9 +10,9 @@ const transformForecats = (data) =>(
     )).map(item=>({
         weekDay:moment.unix(item.dt).format('ddd'),
         hour:moment.unix(item.dt).hour(),
-        data:{
+        data:transformWeather(item)
          
-        }
+        
      })
     ));
 

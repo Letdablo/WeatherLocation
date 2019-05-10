@@ -24,9 +24,7 @@ class App extends Component {
 
   handlerSelectionLocation= city=>{
 
-    this.setState({city}, function () {
-  //    console.log("holi: " + this.state.city);
-    });
+    this.setState({city});
   }
 
 
